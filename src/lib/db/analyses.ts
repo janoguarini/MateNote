@@ -26,6 +26,15 @@ export async function getAnalysisById(client: Client, id: string): Promise<Analy
   return data;
 }
 
+const UNIQUE_VIOLATION = "23505";
+
+/**
+ * Inserts a new analysis for a video. If another concurrent request for the
+ * same video already won the race (video_id is unique), this falls back to
+ * returning that existing row instead of erroring — so two users analyzing
+ * the same brand-new video at the same moment always converge on a single
+ * stored result, never a duplicate row or a hard failure for the loser.
+ */
 export async function createAnalysis(
   client: Client,
   video: VideoMetadata,
@@ -55,7 +64,14 @@ export async function createAnalysis(
     .select("*")
     .single();
 
-  if (error) throw error;
+  if (error) {
+    if (error.code === UNIQUE_VIOLATION) {
+      const existing = await getAnalysisByVideoId(client, video.videoId);
+      if (existing) return existing;
+    }
+    throw error;
+  }
+
   return data;
 }
 
