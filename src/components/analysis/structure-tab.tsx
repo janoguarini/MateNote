@@ -8,7 +8,7 @@ export function StructureTab({ analysis }: { analysis: AnalysisRow }) {
     <div className="flex flex-col gap-5">
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Video structure</CardTitle>
+          <CardTitle className="text-base">Estructura del video</CardTitle>
         </CardHeader>
         <CardContent>
           <ol className="relative flex flex-col gap-6 border-l border-border pl-6">
@@ -35,7 +35,7 @@ export function StructureTab({ analysis }: { analysis: AnalysisRow }) {
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Key moments</CardTitle>
+          <CardTitle className="text-base">Momentos clave</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid gap-3 sm:grid-cols-2">

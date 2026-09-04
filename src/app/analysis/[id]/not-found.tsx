@@ -12,12 +12,12 @@ export default function AnalysisNotFound() {
       <div className="flex size-12 items-center justify-center rounded-full bg-accent">
         <SearchX className="size-5 text-accent-foreground" />
       </div>
-      <h1 className="mt-5 text-xl font-semibold">We couldn&apos;t find this analysis</h1>
+      <h1 className="mt-5 text-xl font-semibold">No pudimos encontrar este análisis</h1>
       <p className="mt-2 max-w-sm text-muted-foreground">
-        It may have been removed, or the link is incorrect.
+        Puede haber sido eliminado, o el link es incorrecto.
       </p>
       <Button asChild className="mt-6">
-        <Link href="/">Analyze a video</Link>
+        <Link href="/">Analizar un video</Link>
       </Button>
     </div>
   );

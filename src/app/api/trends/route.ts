@@ -8,14 +8,14 @@ export async function GET() {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) {
-    return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+    return NextResponse.json({ error: "No estás autenticado" }, { status: 401 });
   }
 
   if (!isYoutubeDataApiConfigured()) {
     return NextResponse.json(
       {
-        error: "Trends aren't configured",
-        message: "Add a YOUTUBE_API_KEY environment variable to see real trending data.",
+        error: "Las tendencias no están configuradas",
+        message: "Agregá una variable de entorno YOUTUBE_API_KEY para ver datos reales de tendencias.",
         configured: false,
       },
       { status: 503 }
@@ -28,7 +28,7 @@ export async function GET() {
   } catch (err) {
     console.error(err);
     return NextResponse.json(
-      { error: "Trends request failed", message: "Please try again in a moment." },
+      { error: "Falló la solicitud de tendencias", message: "Por favor, intentá de nuevo en un momento." },
       { status: 502 }
     );
   }

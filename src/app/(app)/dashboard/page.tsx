@@ -7,7 +7,7 @@ import { AnalyzeForm } from "@/components/analyze/analyze-form";
 import { AnalysisCard } from "@/components/app/analysis-card";
 import { EmptyState } from "@/components/app/empty-state";
 
-export const metadata: Metadata = { title: "Dashboard" };
+export const metadata: Metadata = { title: "Panel" };
 
 export default async function DashboardPage() {
   // The (app) layout redirects unauthenticated/unconfigured requests, but
@@ -25,9 +25,9 @@ export default async function DashboardPage() {
   return (
     <div className="flex flex-col gap-10">
       <div>
-        <p className="text-2xl">Good to see you 👋</p>
+        <p className="text-2xl">Qué bueno verte 👋</p>
         <h1 className="mt-1 font-display text-3xl tracking-tight sm:text-4xl">
-          What do you want to research today?
+          ¿Qué querés investigar hoy?
         </h1>
         <div className="mt-6 max-w-2xl">
           <AnalyzeForm size="hero" />
@@ -35,13 +35,13 @@ export default async function DashboardPage() {
       </div>
 
       <div>
-        <h2 className="mb-4 text-lg font-semibold">Recent analyses</h2>
+        <h2 className="mb-4 text-lg font-semibold">Análisis recientes</h2>
         {recent.length === 0 ? (
           <EmptyState
             icon={FolderOpen}
-            title="Your research library is empty."
-            description="Analyze your first YouTube video and start building your knowledge base."
-            ctaLabel="Analyze a video"
+            title="Tu biblioteca de investigación está vacía."
+            description="Analizá tu primer video de YouTube y empezá a construir tu base de conocimiento."
+            ctaLabel="Analizar un video"
             ctaHref="/analyze"
           />
         ) : (

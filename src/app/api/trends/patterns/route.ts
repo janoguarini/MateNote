@@ -12,13 +12,13 @@ export async function POST(request: Request) {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) {
-    return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+    return NextResponse.json({ error: "No estás autenticado" }, { status: 401 });
   }
 
   const ip = getClientIp(request);
   const { allowed } = checkRateLimit(`patterns:${user.id ?? ip}`, 10, 10 * 60 * 1000);
   if (!allowed) {
-    return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+    return NextResponse.json({ error: "Demasiadas solicitudes" }, { status: 429 });
   }
 
   try {
@@ -26,8 +26,8 @@ export async function POST(request: Request) {
     if (saved.length < 2) {
       return NextResponse.json(
         {
-          error: "Not enough analyses yet",
-          message: "Analyze at least 2 videos to detect patterns across your research.",
+          error: "Todavía no hay suficientes análisis",
+          message: "Analizá al menos 2 videos para detectar patrones en tu investigación.",
         },
         { status: 422 }
       );

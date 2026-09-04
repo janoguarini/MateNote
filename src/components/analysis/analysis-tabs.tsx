@@ -12,11 +12,11 @@ export function AnalysisTabs({ analysis }: { analysis: AnalysisRow }) {
   return (
     <Tabs defaultValue="overview">
       <TabsList>
-        <TabsTrigger value="overview">Overview</TabsTrigger>
+        <TabsTrigger value="overview">Resumen</TabsTrigger>
         <TabsTrigger value="hook">Hook</TabsTrigger>
-        <TabsTrigger value="structure">Structure</TabsTrigger>
+        <TabsTrigger value="structure">Estructura</TabsTrigger>
         <TabsTrigger value="ideas">Ideas</TabsTrigger>
-        <TabsTrigger value="transcript">Transcript</TabsTrigger>
+        <TabsTrigger value="transcript">Transcripción</TabsTrigger>
       </TabsList>
 
       <TabsContent value="overview">

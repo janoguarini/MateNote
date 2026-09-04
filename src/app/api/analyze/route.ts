@@ -20,8 +20,8 @@ export async function POST(request: Request) {
   if (!allowed) {
     return NextResponse.json(
       {
-        error: "You're going a bit fast",
-        message: "Please wait a few minutes before analyzing another video.",
+        error: "Estás yendo un poco rápido",
+        message: "Esperá unos minutos antes de analizar otro video.",
       },
       { status: 429 }
     );
@@ -32,7 +32,7 @@ export async function POST(request: Request) {
     body = bodySchema.parse(await request.json());
   } catch {
     return NextResponse.json(
-      { error: "Invalid request", message: "A YouTube URL is required." },
+      { error: "Solicitud inválida", message: "Se requiere una URL de YouTube." },
       { status: 400 }
     );
   }
@@ -68,9 +68,9 @@ export async function POST(request: Request) {
     if (!isSupabaseConfigured()) {
       return NextResponse.json(
         {
-          error: "Database isn't configured yet",
+          error: "La base de datos todavía no está configurada",
           message:
-            "Analysis succeeded but couldn't be saved because Supabase isn't configured. Add Supabase environment variables to persist analyses.",
+            "El análisis se completó pero no se pudo guardar porque Supabase no está configurado. Agregá las variables de entorno de Supabase para persistir los análisis.",
         },
         { status: 503 }
       );

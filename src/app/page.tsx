@@ -18,61 +18,61 @@ import { Card } from "@/components/ui/card";
 const FEATURES = [
   {
     icon: FileText,
-    title: "Transcript",
-    description: "Get the full video transcript in clean, timestamped text.",
+    title: "Transcripción",
+    description: "Obtené la transcripción completa del video en texto limpio y con timestamps.",
   },
   {
     icon: Sparkles,
-    title: "AI Summary",
-    description: "Understand the entire video in seconds.",
+    title: "Resumen con IA",
+    description: "Entendé todo el video en segundos.",
   },
   {
     icon: Zap,
-    title: "Hook Analysis",
-    description: "See how the creator captures attention in the first seconds.",
+    title: "Análisis de Hook",
+    description: "Descubrí cómo el creador capta la atención en los primeros segundos.",
   },
   {
     icon: ListTree,
-    title: "Video Structure",
-    description: "Understand how the video is organized, beat by beat.",
+    title: "Estructura del video",
+    description: "Entendé cómo está organizado el video, parte por parte.",
   },
   {
     icon: Lightbulb,
-    title: "Content Ideas",
-    description: "Generate new content ideas based on the video.",
+    title: "Ideas de contenido",
+    description: "Generá nuevas ideas de contenido a partir del video.",
   },
   {
     icon: TrendingUp,
-    title: "Trend Research",
-    description: "Discover patterns across creators and videos.",
+    title: "Investigación de tendencias",
+    description: "Descubrí patrones entre creadores y videos.",
   },
 ];
 
 const STEPS = [
   {
     number: "01",
-    title: "Paste",
-    description: "Paste any YouTube URL — a full video, a Short, or a youtu.be link.",
+    title: "Pegá",
+    description: "Pegá cualquier URL de YouTube — un video completo, un Short, o un link youtu.be.",
   },
   {
     number: "02",
-    title: "Analyze",
-    description: "MateNote extracts the transcript and understands the content with AI.",
+    title: "Analizá",
+    description: "MateNote extrae la transcripción y entiende el contenido con IA.",
   },
   {
     number: "03",
-    title: "Create",
-    description: "Turn insights, hooks and structure into better content of your own.",
+    title: "Creá",
+    description: "Convertí insights, hooks y estructura en mejor contenido propio.",
   },
 ];
 
 const STUDY_POINTS = [
-  "patterns",
+  "patrones",
   "hooks",
-  "topics",
-  "formats",
-  "storytelling techniques",
-  "content opportunities",
+  "temas",
+  "formatos",
+  "técnicas narrativas",
+  "oportunidades de contenido",
 ];
 
 export default function Home() {
@@ -88,22 +88,22 @@ export default function Home() {
           <div className="relative mx-auto max-w-4xl px-5 pb-20 pt-20 text-center sm:px-8 sm:pt-28">
             <div className="animate-fade-up mx-auto mb-6 inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs font-medium text-muted-foreground">
               <Sparkles className="size-3.5 text-primary" />
-              A research workspace for creators
+              Un workspace de investigación para creadores
             </div>
             <h1
               className="animate-fade-up font-display text-5xl leading-[1.05] tracking-tight sm:text-6xl"
               style={{ animationDelay: "60ms" }}
             >
-              Turn YouTube videos into
+              Convertí videos de YouTube en
               <br />
-              <span className="italic text-primary">creator insights.</span>
+              <span className="italic text-primary">insights para creadores.</span>
             </h1>
             <p
               className="animate-fade-up mx-auto mt-6 max-w-2xl text-balance text-lg text-muted-foreground"
               style={{ animationDelay: "120ms" }}
             >
-              Paste a YouTube video. Get the transcript, summary, hooks, structure and ideas
-              worth stealing — in seconds.
+              Pegá un video de YouTube. Obtené la transcripción, el resumen, los hooks, la
+              estructura y las ideas que vale la pena robar — en segundos.
             </p>
 
             <div
@@ -112,7 +112,7 @@ export default function Home() {
             >
               <AnalyzeForm size="hero" />
               <p className="mt-3 text-xs text-muted-foreground">
-                Analyze any public YouTube video
+                Analizá cualquier video público de YouTube
               </p>
             </div>
           </div>
@@ -122,7 +122,7 @@ export default function Home() {
         <section id="how-it-works" className="border-t border-border py-24">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="mb-14 max-w-xl">
-              <h2 className="font-display text-3xl tracking-tight sm:text-4xl">How it works</h2>
+              <h2 className="font-display text-3xl tracking-tight sm:text-4xl">Cómo funciona</h2>
             </div>
             <div className="grid gap-10 sm:grid-cols-3 sm:gap-8">
               {STEPS.map((step) => (
@@ -143,10 +143,11 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="mb-14 max-w-xl">
               <h2 className="font-display text-3xl tracking-tight sm:text-4xl">
-                Everything in one workspace
+                Todo en un solo workspace
               </h2>
               <p className="mt-3 text-muted-foreground">
-                Not just a transcript tool — a full research layer for anyone making content.
+                No es solo una herramienta de transcripciones — es una capa completa de
+                investigación para cualquiera que haga contenido.
               </p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -174,18 +175,19 @@ export default function Home() {
             <div className="grid items-center gap-12 lg:grid-cols-2">
               <div>
                 <h2 className="font-display text-3xl tracking-tight sm:text-4xl">
-                  Stop watching.
+                  Dejá de mirar.
                   <br />
-                  <span className="italic text-primary">Start studying.</span>
+                  <span className="italic text-primary">Empezá a estudiar.</span>
                 </h2>
                 <p className="mt-4 max-w-md text-muted-foreground">
-                  MateNote lets you study content that already works, so you can find the{" "}
-                  {STUDY_POINTS.slice(0, -1).join(", ")}, and{" "}
-                  {STUDY_POINTS[STUDY_POINTS.length - 1]} worth borrowing for your own videos.
+                  MateNote te permite estudiar contenido que ya funciona, para que puedas
+                  encontrar {STUDY_POINTS.slice(0, -1).join(", ")} y{" "}
+                  {STUDY_POINTS[STUDY_POINTS.length - 1]} que valga la pena tomar prestados para
+                  tus propios videos.
                 </p>
                 <Button asChild className="mt-7">
                   <Link href="/signup">
-                    Start researching
+                    Empezar a investigar
                     <ArrowRight className="size-4" />
                   </Link>
                 </Button>
@@ -208,11 +210,11 @@ export default function Home() {
         <section className="border-t border-border bg-secondary/40 py-28">
           <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
             <h2 className="font-display text-3xl tracking-tight sm:text-4xl">
-              Your next great idea might already be on YouTube.
+              Tu próxima gran idea puede que ya esté en YouTube.
             </h2>
             <Button asChild size="lg" className="mt-8">
               <Link href="/signup">
-                Analyze your first video
+                Analizá tu primer video
                 <ArrowRight className="size-4" />
               </Link>
             </Button>

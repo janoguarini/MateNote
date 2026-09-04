@@ -35,9 +35,9 @@ export function SavedList({ items }: { items: SavedItem[] }) {
     setPendingId(null);
     if (res.ok) {
       setList((prev) => prev.filter((item) => item.id !== id));
-      toast({ title: "Removed from saved", variant: "default" });
+      toast({ title: "Eliminado de guardados", variant: "default" });
     } else {
-      toast({ title: "Couldn't remove item", variant: "error" });
+      toast({ title: "No se pudo eliminar", variant: "error" });
     }
   }
 
@@ -45,9 +45,9 @@ export function SavedList({ items }: { items: SavedItem[] }) {
     return (
       <EmptyState
         icon={Bookmark}
-        title="Nothing saved yet."
-        description="Analyses you save will show up here so you can find them again."
-        ctaLabel="Analyze a video"
+        title="Todavía no guardaste nada."
+        description="Los análisis que guardes van a aparecer acá para que los encuentres de nuevo."
+        ctaLabel="Analizar un video"
         ctaHref="/analyze"
       />
     );
@@ -60,14 +60,14 @@ export function SavedList({ items }: { items: SavedItem[] }) {
         <Input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search saved analyses…"
+          placeholder="Buscar en análisis guardados…"
           className="pl-9"
         />
       </div>
 
       {filtered.length === 0 ? (
         <p className="py-10 text-center text-sm text-muted-foreground">
-          No saved analyses match &quot;{query}&quot;.
+          Ningún análisis guardado coincide con &quot;{query}&quot;.
         </p>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -90,7 +90,7 @@ export function SavedList({ items }: { items: SavedItem[] }) {
                   handleDelete(item.id);
                 }}
                 className="absolute right-2 top-2 size-7 opacity-0 shadow-sm transition-opacity group-hover:opacity-100"
-                title="Remove from saved"
+                title="Eliminar de guardados"
               >
                 <X className="size-3.5" />
               </Button>

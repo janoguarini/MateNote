@@ -23,7 +23,7 @@ export function PatternFinder({ savedCount }: { savedCount: number }) {
     setLoading(false);
 
     if (!res.ok) {
-      setError(data.message || "Something went wrong.");
+      setError(data.message || "Algo salió mal.");
       return;
     }
     setPatterns(data.patterns);
@@ -35,7 +35,7 @@ export function PatternFinder({ savedCount }: { savedCount: number }) {
         <CardContent className="flex flex-col items-center gap-2 py-10 text-center">
           <Lightbulb className="size-5 text-muted-foreground" />
           <p className="text-sm text-muted-foreground">
-            Analyze at least 2 videos to unlock cross-video pattern detection.
+            Analizá al menos 2 videos para desbloquear la detección de patrones entre videos.
           </p>
         </CardContent>
       </Card>
@@ -45,10 +45,10 @@ export function PatternFinder({ savedCount }: { savedCount: number }) {
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle className="text-base">What your research has in common</CardTitle>
+        <CardTitle className="text-base">Qué tiene en común tu investigación</CardTitle>
         <Button size="sm" onClick={handleFind} disabled={loading}>
           {loading ? <Loader2 className="size-3.5 animate-spin" /> : <Sparkles className="size-3.5" />}
-          Find patterns
+          Buscar patrones
         </Button>
       </CardHeader>
       {(patterns || error) && (
@@ -58,7 +58,7 @@ export function PatternFinder({ savedCount }: { savedCount: number }) {
             <>
               <div>
                 <p className="mb-2 text-sm font-medium text-muted-foreground">
-                  Commonalities across your analyzed videos
+                  Puntos en común entre tus videos analizados
                 </p>
                 <ul className="flex flex-col gap-3">
                   {patterns.commonalities.map((c, i) => (
@@ -70,7 +70,7 @@ export function PatternFinder({ savedCount }: { savedCount: number }) {
                 </ul>
               </div>
               <div className="rounded-lg border border-primary/30 bg-accent/50 p-4">
-                <p className="text-sm font-medium text-accent-foreground">Content opportunity</p>
+                <p className="text-sm font-medium text-accent-foreground">Oportunidad de contenido</p>
                 <p className="mt-1 text-sm leading-relaxed">{patterns.contentOpportunity}</p>
               </div>
             </>

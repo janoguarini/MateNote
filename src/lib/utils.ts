@@ -21,17 +21,17 @@ export function formatRelativeDate(iso: string): string {
   const date = new Date(iso);
   const diffMs = Date.now() - date.getTime();
   const diffMinutes = Math.floor(diffMs / 60000);
-  if (diffMinutes < 1) return "just now";
-  if (diffMinutes < 60) return `${diffMinutes}m ago`;
+  if (diffMinutes < 1) return "recién";
+  if (diffMinutes < 60) return `hace ${diffMinutes}m`;
   const diffHours = Math.floor(diffMinutes / 60);
-  if (diffHours < 24) return `${diffHours}h ago`;
+  if (diffHours < 24) return `hace ${diffHours}h`;
   const diffDays = Math.floor(diffHours / 24);
-  if (diffDays < 7) return `${diffDays}d ago`;
-  return date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+  if (diffDays < 7) return `hace ${diffDays}d`;
+  return date.toLocaleDateString("es-AR", { month: "short", day: "numeric", year: "numeric" });
 }
 
 export function formatCompactNumber(value: number): string {
-  return new Intl.NumberFormat("en-US", { notation: "compact", maximumFractionDigits: 1 }).format(
+  return new Intl.NumberFormat("es-AR", { notation: "compact", maximumFractionDigits: 1 }).format(
     value
   );
 }

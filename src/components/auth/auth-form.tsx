@@ -45,7 +45,7 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
         setError(signUpError.message);
         return;
       }
-      setNotice("Check your inbox to confirm your email, then log in.");
+      setNotice("Revisá tu correo para confirmar tu cuenta y después iniciá sesión.");
       return;
     }
 
@@ -76,11 +76,11 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Authentication isn&apos;t configured</CardTitle>
+          <CardTitle>La autenticación todavía no está configurada</CardTitle>
           <CardDescription>
-            Add <code className="text-xs">NEXT_PUBLIC_SUPABASE_URL</code> and{" "}
-            <code className="text-xs">NEXT_PUBLIC_SUPABASE_ANON_KEY</code> to your environment
-            variables to enable accounts. See the README for setup instructions.
+            Agregá <code className="text-xs">NEXT_PUBLIC_SUPABASE_URL</code> y{" "}
+            <code className="text-xs">NEXT_PUBLIC_SUPABASE_ANON_KEY</code> a tus variables de
+            entorno para habilitar las cuentas. Mirá el README para instrucciones de configuración.
           </CardDescription>
         </CardHeader>
       </Card>
@@ -90,11 +90,11 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{mode === "login" ? "Welcome back" : "Create your account"}</CardTitle>
+        <CardTitle>{mode === "login" ? "Bienvenido de nuevo" : "Creá tu cuenta"}</CardTitle>
         <CardDescription>
           {mode === "login"
-            ? "Log in to continue your research."
-            : "Start building your creator research library."}
+            ? "Iniciá sesión para seguir con tu investigación."
+            : "Empezá a construir tu biblioteca de investigación."}
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
@@ -110,12 +110,12 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
           ) : (
             <GoogleIcon className="size-4" />
           )}
-          Continue with Google
+          Continuar con Google
         </Button>
 
         <div className="flex items-center gap-3">
           <Separator className="flex-1" />
-          <span className="text-xs text-muted-foreground">or</span>
+          <span className="text-xs text-muted-foreground">o</span>
           <Separator className="flex-1" />
         </div>
 
@@ -128,11 +128,11 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com"
+              placeholder="vos@ejemplo.com"
             />
           </div>
           <div className="flex flex-col gap-1.5">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">Contraseña</Label>
             <Input
               id="password"
               type="password"
@@ -149,23 +149,23 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
 
           <Button type="submit" disabled={loading} className="w-full">
             {loading && <Loader2 className="size-4 animate-spin" />}
-            {mode === "login" ? "Log in" : "Sign up"}
+            {mode === "login" ? "Iniciar sesión" : "Registrarme"}
           </Button>
         </form>
 
         <p className="text-center text-sm text-muted-foreground">
           {mode === "login" ? (
             <>
-              Don&apos;t have an account?{" "}
+              ¿No tenés una cuenta?{" "}
               <Link href="/signup" className="text-primary hover:underline">
-                Sign up
+                Registrate
               </Link>
             </>
           ) : (
             <>
-              Already have an account?{" "}
+              ¿Ya tenés una cuenta?{" "}
               <Link href="/login" className="text-primary hover:underline">
-                Log in
+                Iniciá sesión
               </Link>
             </>
           )}

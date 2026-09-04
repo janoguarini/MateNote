@@ -26,7 +26,7 @@ export function AnalysisHeader({
         <Button variant="ghost" size="sm" asChild>
           <Link href={isAuthenticated ? "/dashboard" : "/"}>
             <ArrowLeft className="size-4" />
-            Back
+            Volver
           </Link>
         </Button>
       </div>
@@ -59,7 +59,7 @@ export function AnalysisHeader({
             <Button variant="outline" asChild>
               <a href={analysis.video_url} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="size-4" />
-                Open on YouTube
+                Abrir en YouTube
               </a>
             </Button>
             <SaveButton

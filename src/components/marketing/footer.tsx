@@ -7,14 +7,14 @@ export function MarketingFooter() {
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 py-10 sm:flex-row sm:px-8">
         <Logo />
         <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()} MateNote. Built for creators.
+          © {new Date().getFullYear()} MateNote. Hecho para creadores.
         </p>
         <div className="flex items-center gap-5 text-sm text-muted-foreground">
           <Link href="/login" className="transition-colors hover:text-foreground">
-            Log in
+            Iniciar sesión
           </Link>
           <Link href="/signup" className="transition-colors hover:text-foreground">
-            Sign up
+            Registrarse
           </Link>
         </div>
       </div>

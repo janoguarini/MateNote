@@ -39,7 +39,7 @@ export function AnalysisCard({
         <div className="p-4">
           <div className="mb-1.5 flex items-center justify-between gap-2">
             <Badge variant="secondary" className="text-[10px]">
-              Video analysis
+              Análisis de video
             </Badge>
             <ArrowUpRight className="size-3.5 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
           </div>

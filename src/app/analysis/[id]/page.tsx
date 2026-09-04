@@ -11,11 +11,11 @@ interface PageProps {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  if (!isSupabaseConfigured()) return { title: "Analysis not found" };
+  if (!isSupabaseConfigured()) return { title: "Análisis no encontrado" };
   const { id } = await params;
   const supabase = await createClient();
   const analysis = await getAnalysisById(supabase, id).catch(() => null);
-  if (!analysis) return { title: "Analysis not found" };
+  if (!analysis) return { title: "Análisis no encontrado" };
   return {
     title: analysis.title,
     description: analysis.summary,

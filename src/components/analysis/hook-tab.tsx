@@ -20,7 +20,7 @@ export function HookTab({ analysis }: { analysis: AnalysisRow }) {
           </blockquote>
 
           <div>
-            <p className="mb-2 text-sm font-medium text-muted-foreground">Hook strength</p>
+            <p className="mb-2 text-sm font-medium text-muted-foreground">Fuerza del hook</p>
             <div className="flex items-center gap-2">
               <div className="flex h-2 flex-1 overflow-hidden rounded-full bg-secondary">
                 <div
@@ -33,7 +33,7 @@ export function HookTab({ analysis }: { analysis: AnalysisRow }) {
           </div>
 
           <div>
-            <p className="mb-1.5 text-sm font-medium text-muted-foreground">Why it works</p>
+            <p className="mb-1.5 text-sm font-medium text-muted-foreground">Por qué funciona</p>
             <p className="text-sm leading-relaxed">{hook.whyItWorks}</p>
           </div>
         </CardContent>
@@ -41,7 +41,7 @@ export function HookTab({ analysis }: { analysis: AnalysisRow }) {
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Hook formula</CardTitle>
+          <CardTitle className="text-base">Fórmula del hook</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="rounded-lg bg-secondary px-4 py-3 font-mono text-sm">{hook.formula}</p>

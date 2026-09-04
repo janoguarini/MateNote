@@ -19,53 +19,53 @@ export function ExportMenu({ analysis }: { analysis: AnalysisRow }) {
 
   function copy(text: string, label: string) {
     navigator.clipboard.writeText(text);
-    toast({ title: `${label} copied`, variant: "success" });
+    toast({ title: `${label} copiado`, variant: "success" });
   }
 
   function buildMarkdown(): string {
     return `# ${analysis.title}
 
-**Channel:** ${analysis.channel}
+**Canal:** ${analysis.channel}
 **URL:** ${analysis.video_url}
 
-## Summary
+## Resumen
 
 ${analysis.summary}
 
-## Key Takeaways
+## Puntos clave
 
 ${analysis.key_takeaways.map((t) => `- ${t}`).join("\n")}
 
 ## Hook
 
-**Type:** ${analysis.hook.type}
-**Text:** "${analysis.hook.text}"
-**Why it works:** ${analysis.hook.whyItWorks}
-**Strength:** ${analysis.hook.strength}/10
-**Formula:** ${analysis.hook.formula}
+**Tipo:** ${analysis.hook.type}
+**Texto:** "${analysis.hook.text}"
+**Por qué funciona:** ${analysis.hook.whyItWorks}
+**Fuerza:** ${analysis.hook.strength}/10
+**Fórmula:** ${analysis.hook.formula}
 
-## Structure
+## Estructura
 
 ${analysis.structure.map((s) => `- **${s.timestamp}** — ${s.title}: ${s.description}`).join("\n")}
 
-## Key Moments
+## Momentos clave
 
 ${analysis.key_moments.map((m) => `- **${m.timestamp}** — ${m.title}: ${m.description}`).join("\n")}
 
-## Content Ideas
+## Ideas de contenido
 
 ${analysis.content_ideas
   .map(
     (idea) =>
-      `### ${idea.title}\n- **Hook:** ${idea.hook}\n- **Format:** ${idea.format}\n- **Angle:** ${idea.angle}\n- ${idea.explanation}`
+      `### ${idea.title}\n- **Hook:** ${idea.hook}\n- **Formato:** ${idea.format}\n- **Ángulo:** ${idea.angle}\n- ${idea.explanation}`
   )
   .join("\n\n")}
 
-## Creator Takeaways
+## Qué robarle al creador
 
 ${analysis.creator_takeaways.map((t) => `- ${t}`).join("\n")}
 
-## Transcript
+## Transcripción
 
 ${analysis.transcript.fullText}
 `;
@@ -76,37 +76,37 @@ ${analysis.transcript.fullText}
       <DropdownMenuTrigger asChild>
         <Button variant="outline">
           <Download className="size-4" />
-          Export
+          Exportar
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onSelect={() => copy(analysis.summary, "Summary")}>
+        <DropdownMenuItem onSelect={() => copy(analysis.summary, "Resumen")}>
           <Copy className="size-4" />
-          Copy summary
+          Copiar resumen
         </DropdownMenuItem>
         <DropdownMenuItem
           onSelect={() => {
-            copy(analysis.transcript.fullText, "Transcript");
+            copy(analysis.transcript.fullText, "Transcripción");
             track({ name: "transcript_copied", analysisId: analysis.id });
           }}
         >
           <Copy className="size-4" />
-          Copy transcript
+          Copiar transcripción
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onSelect={() =>
-            downloadTextFile(`${slugify(analysis.title)}-transcript.txt`, analysis.transcript.fullText)
+            downloadTextFile(`${slugify(analysis.title)}-transcripcion.txt`, analysis.transcript.fullText)
           }
         >
           <FileText className="size-4" />
-          Download transcript (.txt)
+          Descargar transcripción (.txt)
         </DropdownMenuItem>
         <DropdownMenuItem
-          onSelect={() => downloadTextFile(`${slugify(analysis.title)}-analysis.md`, buildMarkdown())}
+          onSelect={() => downloadTextFile(`${slugify(analysis.title)}-analisis.md`, buildMarkdown())}
         >
           <FileText className="size-4" />
-          Download analysis (.md)
+          Descargar análisis (.md)
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -11,13 +11,13 @@ export async function POST(_request: Request, { params }: { params: Promise<{ id
   } = await supabase.auth.getUser();
 
   if (!user) {
-    return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+    return NextResponse.json({ error: "No estás autenticado" }, { status: 401 });
   }
 
   try {
     const analysis = await getAnalysisById(supabase, id);
     if (!analysis) {
-      return NextResponse.json({ error: "Analysis not found" }, { status: 404 });
+      return NextResponse.json({ error: "Análisis no encontrado" }, { status: 404 });
     }
     await saveAnalysisForUser(supabase, user.id, id);
     return NextResponse.json({ ok: true });

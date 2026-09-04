@@ -48,7 +48,7 @@ export function ResearchSearch() {
     }
 
     if (!res.ok) {
-      toast({ title: "Search failed", description: data.message, variant: "error" });
+      toast({ title: "Falló la búsqueda", description: data.message, variant: "error" });
       return;
     }
 
@@ -67,7 +67,7 @@ export function ResearchSearch() {
     setAnalyzingId(null);
 
     if (!res.ok) {
-      toast({ title: data.error || "Analysis failed", description: data.message, variant: "error" });
+      toast({ title: data.error || "Falló el análisis", description: data.message, variant: "error" });
       return;
     }
     router.push(`/analysis/${data.id}`);
@@ -81,28 +81,28 @@ export function ResearchSearch() {
           <Input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search creators, topics or video ideas"
+            placeholder="Buscá creadores, temas o ideas de video"
             className="h-12 pl-10 text-[15px]"
           />
         </div>
         <Button type="submit" size="lg" disabled={loading}>
-          {loading ? <Loader2 className="size-4 animate-spin" /> : "Search"}
+          {loading ? <Loader2 className="size-4 animate-spin" /> : "Buscar"}
         </Button>
       </form>
 
       {notConfigured && (
         <EmptyState
           icon={PlugZap}
-          title="Research isn't connected yet"
-          description="Add a YOUTUBE_API_KEY environment variable to search real YouTube videos, creators and topics. See the README for setup instructions."
+          title="Investigación todavía no está conectada"
+          description="Agregá una variable de entorno YOUTUBE_API_KEY para buscar videos, creadores y temas reales de YouTube. Mirá el README para instrucciones de configuración."
         />
       )}
 
       {!notConfigured && searched && !loading && results?.length === 0 && (
         <EmptyState
           icon={SearchX}
-          title="No results found"
-          description={`Nothing matched "${query}". Try a different search term.`}
+          title="No se encontraron resultados"
+          description={`No apareció nada para "${query}". Probá con otro término de búsqueda.`}
         />
       )}
 
@@ -158,7 +158,7 @@ export function ResearchSearch() {
                     <Loader2 className="size-3.5 animate-spin" />
                   ) : (
                     <>
-                      Analyze
+                      Analizar
                       <ArrowRight className="size-3.5" />
                     </>
                   )}

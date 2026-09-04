@@ -18,33 +18,33 @@ export function toFriendlyError(err: unknown): FriendlyError {
     switch (err.code) {
       case "invalid_url":
         return {
-          title: "That doesn't look like a YouTube link",
-          message: "Paste a full YouTube video, Shorts, or youtu.be URL.",
+          title: "Eso no parece un link de YouTube",
+          message: "Pegá la URL completa de un video, Short, o link youtu.be de YouTube.",
           status: 400,
         };
       case "video_not_found":
         return {
-          title: "We couldn't find this video",
-          message: "It may have been removed, or it's private. Try another public YouTube video.",
+          title: "No pudimos encontrar este video",
+          message: "Puede haber sido eliminado, o es privado. Probá con otro video público de YouTube.",
           status: 404,
         };
       case "video_private":
         return {
-          title: "This video is private",
-          message: "MateNote can only analyze public YouTube videos.",
+          title: "Este video es privado",
+          message: "MateNote solo puede analizar videos públicos de YouTube.",
           status: 403,
         };
       case "transcript_unavailable":
         return {
-          title: "We couldn't analyze this video",
+          title: "No pudimos analizar este video",
           message:
-            "This video doesn't appear to have an accessible transcript. Try another public YouTube video.",
+            "Este video no parece tener una transcripción accesible. Probá con otro video público de YouTube.",
           status: 422,
         };
       case "network_error":
         return {
-          title: "YouTube is unreachable right now",
-          message: "Please try again in a moment.",
+          title: "YouTube no está disponible en este momento",
+          message: "Por favor, intentá de nuevo en un momento.",
           status: 502,
         };
     }
@@ -52,23 +52,23 @@ export function toFriendlyError(err: unknown): FriendlyError {
 
   if (err instanceof MissingApiKeyError) {
     return {
-      title: "AI analysis isn't configured yet",
-      message: `${err.message} Add it to your environment variables to enable analysis.`,
+      title: "El análisis con IA todavía no está configurado",
+      message: `${err.message} Agregala a tus variables de entorno para habilitar el análisis.`,
       status: 503,
     };
   }
 
   if (err instanceof AiAnalysisError) {
     return {
-      title: "We couldn't generate insights for this video",
-      message: "Something went wrong while analyzing the transcript. Please try again.",
+      title: "No pudimos generar insights para este video",
+      message: "Algo salió mal al analizar la transcripción. Por favor, intentá de nuevo.",
       status: 502,
     };
   }
 
   return {
-    title: "Something went wrong",
-    message: "An unexpected error occurred. Please try again.",
+    title: "Algo salió mal",
+    message: "Ocurrió un error inesperado. Por favor, intentá de nuevo.",
     status: 500,
   };
 }

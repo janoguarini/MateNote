@@ -11,7 +11,7 @@ export async function DELETE(_request: Request, { params }: { params: Promise<{ 
   } = await supabase.auth.getUser();
 
   if (!user) {
-    return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+    return NextResponse.json({ error: "No estás autenticado" }, { status: 401 });
   }
 
   try {

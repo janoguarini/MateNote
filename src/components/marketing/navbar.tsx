@@ -11,21 +11,21 @@ export function MarketingNavbar() {
         </Link>
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
           <a href="#how-it-works" className="transition-colors hover:text-foreground">
-            How it works
+            Cómo funciona
           </a>
           <a href="#features" className="transition-colors hover:text-foreground">
-            Features
+            Funciones
           </a>
           <a href="#research" className="transition-colors hover:text-foreground">
-            Research
+            Investigación
           </a>
         </nav>
         <div className="flex items-center gap-2">
           <Button variant="ghost" asChild size="sm">
-            <Link href="/login">Log in</Link>
+            <Link href="/login">Iniciar sesión</Link>
           </Button>
           <Button asChild size="sm">
-            <Link href="/signup">Get started</Link>
+            <Link href="/signup">Empezar</Link>
           </Button>
         </div>
       </div>

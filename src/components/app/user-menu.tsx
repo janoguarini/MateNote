@@ -34,7 +34,7 @@ export function UserMenu({ email }: { email: string }) {
       <DropdownMenuContent align="start" side="top" className="w-56">
         <DropdownMenuItem variant="destructive" onSelect={handleLogout}>
           <LogOut className="size-4" />
-          Log out
+          Cerrar sesión
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

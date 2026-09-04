@@ -51,7 +51,7 @@ export function Sidebar({ email }: { email: string }) {
           )}
         >
           <Settings className="size-4" />
-          Settings
+          Configuración
         </Link>
         <UserMenu email={email} />
       </div>

@@ -1,13 +1,13 @@
 import { z } from "zod";
 
 export const HOOK_TYPES = [
-  "Curiosity",
-  "Contrarian",
-  "Problem",
-  "Story",
-  "Promise",
-  "Shock",
-  "Question",
+  "Curiosidad",
+  "Contraria",
+  "Problema",
+  "Historia",
+  "Promesa",
+  "Impacto",
+  "Pregunta",
 ] as const;
 
 export const hookSchema = z.object({

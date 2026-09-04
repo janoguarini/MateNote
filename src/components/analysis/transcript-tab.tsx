@@ -41,26 +41,26 @@ export function TranscriptTab({ analysis }: { analysis: AnalysisRow }) {
     const text = window.getSelection()?.toString() ?? "";
     if (!text) return;
     navigator.clipboard.writeText(text);
-    toast({ title: "Selection copied", variant: "success" });
+    toast({ title: "Selección copiada", variant: "success" });
   }
 
   function copyAll() {
     navigator.clipboard.writeText(analysis.transcript.fullText);
     track({ name: "transcript_copied", analysisId: analysis.id });
-    toast({ title: "Transcript copied", variant: "success" });
+    toast({ title: "Transcripción copiada", variant: "success" });
   }
 
   function downloadTxt() {
-    downloadTextFile(`${slugify(analysis.title)}-transcript.txt`, analysis.transcript.fullText);
+    downloadTextFile(`${slugify(analysis.title)}-transcripcion.txt`, analysis.transcript.fullText);
   }
 
   return (
     <Card>
       <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <CardTitle className="text-base">
-          Transcript{" "}
+          Transcripción{" "}
           <span className="ml-1.5 font-normal text-muted-foreground">
-            ({analysis.transcript.wordCount.toLocaleString()} words)
+            ({analysis.transcript.wordCount.toLocaleString()} palabras)
           </span>
         </CardTitle>
         <div className="flex flex-wrap items-center gap-2">
@@ -69,19 +69,19 @@ export function TranscriptTab({ analysis }: { analysis: AnalysisRow }) {
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search transcript…"
+              placeholder="Buscar en la transcripción…"
               className="h-8 w-44 pl-8 text-xs sm:w-56"
             />
           </div>
           {hasSelection && (
             <Button size="sm" variant="secondary" onClick={copySelection}>
               <ClipboardCopy className="size-3.5" />
-              Copy selection
+              Copiar selección
             </Button>
           )}
           <Button size="sm" variant="outline" onClick={copyAll}>
             <Copy className="size-3.5" />
-            Copy
+            Copiar
           </Button>
           <Button size="sm" variant="outline" onClick={downloadTxt}>
             <Download className="size-3.5" />
@@ -93,7 +93,7 @@ export function TranscriptTab({ analysis }: { analysis: AnalysisRow }) {
         <div ref={containerRef} className="flex flex-col divide-y divide-border">
           {filtered.length === 0 ? (
             <p className="py-8 text-center text-sm text-muted-foreground">
-              No matches for &quot;{query}&quot;.
+              No hay resultados para &quot;{query}&quot;.
             </p>
           ) : (
             filtered.map((segment, i) => (

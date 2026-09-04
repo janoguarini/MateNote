@@ -9,20 +9,20 @@ export async function GET(request: Request) {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) {
-    return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+    return NextResponse.json({ error: "No estás autenticado" }, { status: 401 });
   }
 
   const ip = getClientIp(request);
   const { allowed } = checkRateLimit(`research:${ip}`, 30, 10 * 60 * 1000);
   if (!allowed) {
-    return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+    return NextResponse.json({ error: "Demasiadas solicitudes" }, { status: 429 });
   }
 
   if (!isYoutubeDataApiConfigured()) {
     return NextResponse.json(
       {
-        error: "YouTube search isn't configured",
-        message: "Add a YOUTUBE_API_KEY environment variable to enable creator research.",
+        error: "La búsqueda de YouTube no está configurada",
+        message: "Agregá una variable de entorno YOUTUBE_API_KEY para habilitar la investigación de creadores.",
         configured: false,
       },
       { status: 503 }
@@ -32,7 +32,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const query = searchParams.get("q")?.trim();
   if (!query) {
-    return NextResponse.json({ error: "A search query is required." }, { status: 400 });
+    return NextResponse.json({ error: "Se requiere un término de búsqueda." }, { status: 400 });
   }
 
   try {
@@ -41,7 +41,7 @@ export async function GET(request: Request) {
   } catch (err) {
     console.error(err);
     return NextResponse.json(
-      { error: "Search failed", message: "Please try again in a moment." },
+      { error: "Falló la búsqueda", message: "Por favor, intentá de nuevo en un momento." },
       { status: 502 }
     );
   }

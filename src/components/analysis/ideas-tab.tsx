@@ -19,7 +19,7 @@ export function IdeasTab({ analysis }: { analysis: AnalysisRow }) {
   return (
     <div>
       <div className="mb-4">
-        <h2 className="text-base font-semibold">What could you create from this?</h2>
+        <h2 className="text-base font-semibold">¿Qué podrías crear a partir de esto?</h2>
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
         {analysis.content_ideas.map((idea, i) => (
@@ -39,7 +39,7 @@ export function IdeasTab({ analysis }: { analysis: AnalysisRow }) {
               </div>
               <div>
                 <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                  Angle
+                  Ángulo
                 </p>
                 <p className="mt-0.5 text-sm leading-relaxed">{idea.angle}</p>
               </div>

@@ -36,9 +36,12 @@ export function SaveButton({
     if (res.ok) {
       setSaved((prev) => !prev);
       if (!saved) track({ name: "analysis_saved", analysisId });
-      toast({ title: saved ? "Removed from saved" : "Saved to your library", variant: "success" });
+      toast({
+        title: saved ? "Eliminado de guardados" : "Guardado en tu biblioteca",
+        variant: "success",
+      });
     } else {
-      toast({ title: "Something went wrong", variant: "error" });
+      toast({ title: "Algo salió mal", variant: "error" });
     }
   }
 
@@ -51,7 +54,7 @@ export function SaveButton({
       ) : (
         <Bookmark className="size-4" />
       )}
-      {saved ? "Saved" : "Save"}
+      {saved ? "Guardado" : "Guardar"}
     </Button>
   );
 }

@@ -18,30 +18,30 @@ const instrument = Instrument_Serif({
 export const metadata: Metadata = {
   metadataBase: new URL("https://matenote.app"),
   title: {
-    default: "MateNote — Turn YouTube Videos Into Creator Insights",
+    default: "MateNote — Convertí videos de YouTube en insights para creadores",
     template: "%s · MateNote",
   },
   description:
-    "Analyze YouTube videos, extract transcripts, discover hooks, understand content structure and generate new ideas with AI.",
+    "Analizá videos de YouTube, extraé transcripciones, descubrí hooks, entendé la estructura del contenido y generá nuevas ideas con IA.",
   openGraph: {
-    title: "MateNote — Turn YouTube Videos Into Creator Insights",
+    title: "MateNote — Convertí videos de YouTube en insights para creadores",
     description:
-      "Analyze YouTube videos, extract transcripts, discover hooks, understand content structure and generate new ideas with AI.",
+      "Analizá videos de YouTube, extraé transcripciones, descubrí hooks, entendé la estructura del contenido y generá nuevas ideas con IA.",
     siteName: "MateNote",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "MateNote — Turn YouTube Videos Into Creator Insights",
+    title: "MateNote — Convertí videos de YouTube en insights para creadores",
     description:
-      "Analyze YouTube videos, extract transcripts, discover hooks, understand content structure and generate new ideas with AI.",
+      "Analizá videos de YouTube, extraé transcripciones, descubrí hooks, entendé la estructura del contenido y generá nuevas ideas con IA.",
   },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang="es"
       className={`${inter.variable} ${instrument.variable} h-full antialiased`}
       suppressHydrationWarning
     >

@@ -51,8 +51,8 @@ export function TrendingGrid() {
     return (
       <EmptyState
         icon={PlugZap}
-        title="Trends aren't connected yet"
-        description="Add a YOUTUBE_API_KEY environment variable to see real trending topics, fast-growing videos and popular formats. See the README for setup instructions."
+        title="Tendencias todavía no están conectadas"
+        description="Agregá una variable de entorno YOUTUBE_API_KEY para ver tendencias reales, videos en crecimiento y formatos populares. Mirá el README para instrucciones de configuración."
       />
     );
   }
@@ -61,8 +61,8 @@ export function TrendingGrid() {
     return (
       <EmptyState
         icon={PlugZap}
-        title="No trending data available"
-        description="YouTube didn't return trending data for your region right now."
+        title="No hay datos de tendencias disponibles"
+        description="YouTube no devolvió datos de tendencias para tu región en este momento."
       />
     );
   }
@@ -98,7 +98,7 @@ export function TrendingGrid() {
               {video.viewCount !== null && (
                 <p className="mt-1 flex items-center gap-1 text-xs text-muted-foreground">
                   <Eye className="size-3" />
-                  {formatCompactNumber(video.viewCount)} views
+                  {formatCompactNumber(video.viewCount)} vistas
                 </p>
               )}
             </div>

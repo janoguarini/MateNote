@@ -4,7 +4,7 @@ import { isSupabaseConfigured } from "@/lib/supabase/env";
 import { listSavedAnalyses } from "@/lib/db/analyses";
 import { SavedList } from "@/components/app/saved-list";
 
-export const metadata: Metadata = { title: "Saved" };
+export const metadata: Metadata = { title: "Guardados" };
 
 export default async function SavedPage() {
   if (!isSupabaseConfigured()) return null;
@@ -19,8 +19,8 @@ export default async function SavedPage() {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h1 className="font-display text-3xl tracking-tight">Saved</h1>
-        <p className="mt-1 text-muted-foreground">Your personal research library.</p>
+        <h1 className="font-display text-3xl tracking-tight">Guardados</h1>
+        <p className="mt-1 text-muted-foreground">Tu biblioteca personal de investigación.</p>
       </div>
       <SavedList
         items={items.map((item) => ({

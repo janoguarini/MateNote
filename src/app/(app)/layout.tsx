@@ -20,7 +20,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
 
   return (
     <div className="min-h-screen bg-background">
-      <Sidebar email={user.email ?? "Account"} />
+      <Sidebar email={user.email ?? "Cuenta"} />
       <div className="pb-16 md:pb-0 md:pl-60">
         <main className="mx-auto max-w-5xl px-5 py-8 sm:px-8 sm:py-10">{children}</main>
       </div>

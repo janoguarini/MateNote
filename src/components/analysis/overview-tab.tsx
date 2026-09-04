@@ -7,7 +7,7 @@ export function OverviewTab({ analysis }: { analysis: AnalysisRow }) {
     <div className="flex flex-col gap-5">
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">AI Summary</CardTitle>
+          <CardTitle className="text-base">Resumen con IA</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="leading-relaxed text-foreground/90">{analysis.summary}</p>
@@ -16,7 +16,7 @@ export function OverviewTab({ analysis }: { analysis: AnalysisRow }) {
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Key takeaways</CardTitle>
+          <CardTitle className="text-base">Puntos clave</CardTitle>
         </CardHeader>
         <CardContent>
           <ul className="flex flex-col gap-3">
@@ -32,8 +32,8 @@ export function OverviewTab({ analysis }: { analysis: AnalysisRow }) {
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Creator takeaways</CardTitle>
-          <p className="text-sm text-muted-foreground">What should I steal from this video?</p>
+          <CardTitle className="text-base">Qué robarle al creador</CardTitle>
+          <p className="text-sm text-muted-foreground">¿Qué debería robarle a este video?</p>
         </CardHeader>
         <CardContent>
           <ul className="flex flex-col gap-3">

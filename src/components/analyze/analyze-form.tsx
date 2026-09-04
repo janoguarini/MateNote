@@ -11,11 +11,11 @@ import { useToast } from "@/components/ui/toast";
 import { track } from "@/lib/analytics";
 
 const STAGES = [
-  "Fetching video",
-  "Extracting transcript",
-  "Understanding content",
-  "Generating insights",
-  "Almost done",
+  "Obteniendo el video",
+  "Extrayendo la transcripción",
+  "Entendiendo el contenido",
+  "Generando insights",
+  "Ya casi termina",
 ];
 
 const STAGE_INTERVAL_MS = 3200;
@@ -49,7 +49,7 @@ export function AnalyzeForm({
     setError(null);
 
     if (!isValidYoutubeUrl(url)) {
-      setError("Paste a valid YouTube video, Shorts, or youtu.be link.");
+      setError("Pegá un link válido de YouTube, Shorts, o youtu.be.");
       return;
     }
 
@@ -65,8 +65,8 @@ export function AnalyzeForm({
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.message || "Something went wrong. Please try again.");
-        toast({ title: data.error || "Analysis failed", description: data.message, variant: "error" });
+        setError(data.message || "Algo salió mal. Intentá de nuevo.");
+        toast({ title: data.error || "Falló el análisis", description: data.message, variant: "error" });
         setLoading(false);
         return;
       }
@@ -78,7 +78,7 @@ export function AnalyzeForm({
       });
       router.push(`/analysis/${data.id}`);
     } catch {
-      setError("Network error. Please check your connection and try again.");
+      setError("Error de red. Revisá tu conexión e intentá de nuevo.");
       setLoading(false);
     }
   }
@@ -97,7 +97,7 @@ export function AnalyzeForm({
           </div>
           <div className="min-w-0">
             <p className="font-medium">{STAGES[stageIndex]}…</p>
-            <p className="text-sm text-muted-foreground">This usually takes 20–40 seconds.</p>
+            <p className="text-sm text-muted-foreground">Esto suele tardar 20–40 segundos.</p>
           </div>
         </div>
         <div className="mt-5 flex flex-col gap-2">
@@ -140,7 +140,7 @@ export function AnalyzeForm({
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             autoFocus={autoFocus}
-            placeholder="Paste a YouTube URL…"
+            placeholder="Pegá una URL de YouTube…"
             className={cn(
               "border-0 shadow-none px-0 h-9 focus-visible:ring-0 bg-transparent",
               size === "hero" && "h-11 text-[15px]"
@@ -152,7 +152,7 @@ export function AnalyzeForm({
           size={size === "hero" ? "lg" : "default"}
           className="shrink-0 gap-1.5"
         >
-          Analyze
+          Analizar
           <ArrowRight className="size-4" />
         </Button>
       </div>
