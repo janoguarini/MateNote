@@ -11,7 +11,11 @@ export const HOOK_TYPES = [
 ] as const;
 
 export const hookSchema = z.object({
-  text: z.string().describe("The exact or paraphrased opening line(s) that hook the viewer"),
+  text: z
+    .string()
+    .describe(
+      "The hook's opening line(s), translated/paraphrased into natural Spanish. Never in the video's original language or script — always Spanish."
+    ),
   type: z.enum(HOOK_TYPES),
   whyItWorks: z.string().describe("2-3 sentence explanation of why this hook is effective"),
   strength: z.number().min(1).max(10).describe("Estimated hook strength, 1-10"),
