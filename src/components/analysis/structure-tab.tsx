@@ -1,11 +1,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { buildYoutubeWatchUrl } from "@/lib/youtube/url";
 import { timestampToSeconds } from "@/lib/utils";
+import { StructureTimeline } from "./structure-timeline";
 import type { AnalysisRow } from "@/lib/db/types";
 
 export function StructureTab({ analysis }: { analysis: AnalysisRow }) {
   return (
     <div className="flex flex-col gap-5">
+      <StructureTimeline analysis={analysis} />
+
       <Card>
         <CardHeader>
           <CardTitle className="text-base">Estructura del video</CardTitle>

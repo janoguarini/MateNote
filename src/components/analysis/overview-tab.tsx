@@ -1,5 +1,7 @@
 import { CheckCircle2, Gem } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { StatsChart } from "./stats-chart";
+import { ChannelComparison } from "./channel-comparison";
 import type { AnalysisRow } from "@/lib/db/types";
 
 export function OverviewTab({ analysis }: { analysis: AnalysisRow }) {
@@ -13,6 +15,11 @@ export function OverviewTab({ analysis }: { analysis: AnalysisRow }) {
           <p className="leading-relaxed text-foreground/90">{analysis.summary}</p>
         </CardContent>
       </Card>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <StatsChart analysis={analysis} />
+        <ChannelComparison analysis={analysis} />
+      </div>
 
       <Card>
         <CardHeader>
