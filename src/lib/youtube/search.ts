@@ -1,3 +1,5 @@
+import { parseIso8601Duration } from "./duration";
+
 export class YoutubeApiNotConfiguredError extends Error {
   constructor() {
     super("YouTube Data API key is not configured.");
@@ -12,16 +14,9 @@ export interface YoutubeSearchResult {
   thumbnailUrl: string;
   publishedAt: string;
   viewCount: number | null;
+  likeCount: number | null;
+  commentCount: number | null;
   durationSeconds: number | null;
-}
-
-function parseIso8601Duration(iso: string): number {
-  const match = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
-  if (!match) return 0;
-  const hours = parseInt(match[1] ?? "0", 10);
-  const minutes = parseInt(match[2] ?? "0", 10);
-  const seconds = parseInt(match[3] ?? "0", 10);
-  return hours * 3600 + minutes * 60 + seconds;
 }
 
 function requireApiKey(): string {
@@ -30,9 +25,43 @@ function requireApiKey(): string {
   return key;
 }
 
+interface VideoItem {
+  id: string;
+  snippet: {
+    title: string;
+    channelTitle: string;
+    publishedAt: string;
+    thumbnails: { high?: { url: string }; medium?: { url: string }; default?: { url: string } };
+  };
+  statistics?: { viewCount?: string; likeCount?: string; commentCount?: string };
+  contentDetails?: { duration?: string };
+}
+
+function mapVideoItem(item: VideoItem): YoutubeSearchResult {
+  return {
+    videoId: item.id,
+    title: item.snippet.title,
+    channel: item.snippet.channelTitle,
+    thumbnailUrl:
+      item.snippet.thumbnails.high?.url ??
+      item.snippet.thumbnails.medium?.url ??
+      item.snippet.thumbnails.default?.url ??
+      "",
+    publishedAt: item.snippet.publishedAt,
+    viewCount: item.statistics?.viewCount ? parseInt(item.statistics.viewCount, 10) : null,
+    likeCount: item.statistics?.likeCount ? parseInt(item.statistics.likeCount, 10) : null,
+    commentCount: item.statistics?.commentCount
+      ? parseInt(item.statistics.commentCount, 10)
+      : null,
+    durationSeconds: item.contentDetails?.duration
+      ? parseIso8601Duration(item.contentDetails.duration)
+      : null,
+  };
+}
+
 /**
  * Searches public YouTube videos via the Data API, then enriches results
- * with view counts and durations in a second batched call.
+ * with view/like/comment counts and durations in a second batched call.
  */
 export async function searchYoutubeVideos(query: string): Promise<YoutubeSearchResult[]> {
   const apiKey = requireApiKey();
@@ -57,33 +86,7 @@ export async function searchYoutubeVideos(query: string): Promise<YoutubeSearchR
   if (!detailsRes.ok) throw new Error("YouTube video details request failed.");
   const detailsData = await detailsRes.json();
 
-  interface VideoItem {
-    id: string;
-    snippet: {
-      title: string;
-      channelTitle: string;
-      publishedAt: string;
-      thumbnails: { high?: { url: string }; medium?: { url: string }; default?: { url: string } };
-    };
-    statistics?: { viewCount?: string };
-    contentDetails?: { duration?: string };
-  }
-
-  return (detailsData.items ?? []).map((item: VideoItem) => ({
-    videoId: item.id,
-    title: item.snippet.title,
-    channel: item.snippet.channelTitle,
-    thumbnailUrl:
-      item.snippet.thumbnails.high?.url ??
-      item.snippet.thumbnails.medium?.url ??
-      item.snippet.thumbnails.default?.url ??
-      "",
-    publishedAt: item.snippet.publishedAt,
-    viewCount: item.statistics?.viewCount ? parseInt(item.statistics.viewCount, 10) : null,
-    durationSeconds: item.contentDetails?.duration
-      ? parseIso8601Duration(item.contentDetails.duration)
-      : null,
-  }));
+  return (detailsData.items ?? []).map(mapVideoItem);
 }
 
 export async function getTrendingVideos(regionCode = "US"): Promise<YoutubeSearchResult[]> {
@@ -94,34 +97,7 @@ export async function getTrendingVideos(regionCode = "US"): Promise<YoutubeSearc
   if (!res.ok) throw new Error("YouTube trending request failed.");
   const data = await res.json();
 
-  interface VideoItem {
-    id: string;
-    snippet: {
-      title: string;
-      channelTitle: string;
-      publishedAt: string;
-      categoryId?: string;
-      thumbnails: { high?: { url: string }; medium?: { url: string }; default?: { url: string } };
-    };
-    statistics?: { viewCount?: string };
-    contentDetails?: { duration?: string };
-  }
-
-  return (data.items ?? []).map((item: VideoItem) => ({
-    videoId: item.id,
-    title: item.snippet.title,
-    channel: item.snippet.channelTitle,
-    thumbnailUrl:
-      item.snippet.thumbnails.high?.url ??
-      item.snippet.thumbnails.medium?.url ??
-      item.snippet.thumbnails.default?.url ??
-      "",
-    publishedAt: item.snippet.publishedAt,
-    viewCount: item.statistics?.viewCount ? parseInt(item.statistics.viewCount, 10) : null,
-    durationSeconds: item.contentDetails?.duration
-      ? parseIso8601Duration(item.contentDetails.duration)
-      : null,
-  }));
+  return (data.items ?? []).map(mapVideoItem);
 }
 
 export function isYoutubeDataApiConfigured(): boolean {

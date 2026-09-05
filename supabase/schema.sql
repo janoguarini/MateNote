@@ -19,6 +19,14 @@ create table if not exists public.analyses (
   channel text not null,
   thumbnail_url text not null,
   duration_seconds integer,
+  published_at timestamptz,
+  view_count bigint,
+  like_count bigint,
+  comment_count bigint,
+  tags jsonb,                      -- string[] | null
+  category text,
+  channel_id text,
+  subscriber_count bigint,
 
   transcript jsonb not null,       -- { fullText, segments, wordCount }
   summary text not null,

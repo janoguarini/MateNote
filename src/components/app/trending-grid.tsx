@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Eye, Clock, PlugZap } from "lucide-react";
+import { Eye, ThumbsUp, MessageCircle, Clock, PlugZap } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { EmptyState } from "@/components/app/empty-state";
@@ -13,6 +13,8 @@ interface TrendingVideo {
   channel: string;
   thumbnailUrl: string;
   viewCount: number | null;
+  likeCount: number | null;
+  commentCount: number | null;
   durationSeconds: number | null;
 }
 
@@ -95,12 +97,26 @@ export function TrendingGrid() {
             <div className="p-3.5">
               <h3 className="line-clamp-2 text-sm font-semibold leading-snug">{video.title}</h3>
               <p className="mt-1 truncate text-xs text-muted-foreground">{video.channel}</p>
-              {video.viewCount !== null && (
-                <p className="mt-1 flex items-center gap-1 text-xs text-muted-foreground">
-                  <Eye className="size-3" />
-                  {formatCompactNumber(video.viewCount)} vistas
-                </p>
-              )}
+              <div className="mt-1 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs text-muted-foreground">
+                {video.viewCount !== null && (
+                  <span className="flex items-center gap-1">
+                    <Eye className="size-3" />
+                    {formatCompactNumber(video.viewCount)}
+                  </span>
+                )}
+                {video.likeCount !== null && (
+                  <span className="flex items-center gap-1">
+                    <ThumbsUp className="size-3" />
+                    {formatCompactNumber(video.likeCount)}
+                  </span>
+                )}
+                {video.commentCount !== null && (
+                  <span className="flex items-center gap-1">
+                    <MessageCircle className="size-3" />
+                    {formatCompactNumber(video.commentCount)}
+                  </span>
+                )}
+              </div>
             </div>
           </Card>
         </a>

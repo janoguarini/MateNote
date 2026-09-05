@@ -2,7 +2,17 @@
 
 import * as React from "react";
 import { useRouter } from "next/navigation";
-import { Search, Loader2, Eye, Clock, ArrowRight, SearchX, PlugZap } from "lucide-react";
+import {
+  Search,
+  Loader2,
+  Eye,
+  ThumbsUp,
+  MessageCircle,
+  Clock,
+  ArrowRight,
+  SearchX,
+  PlugZap,
+} from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -18,6 +28,8 @@ interface SearchResult {
   thumbnailUrl: string;
   publishedAt: string;
   viewCount: number | null;
+  likeCount: number | null;
+  commentCount: number | null;
   durationSeconds: number | null;
 }
 
@@ -139,11 +151,23 @@ export function ResearchSearch() {
               <div className="p-4">
                 <h3 className="line-clamp-2 text-sm font-semibold leading-snug">{result.title}</h3>
                 <p className="mt-1.5 truncate text-xs text-muted-foreground">{result.channel}</p>
-                <div className="mt-1.5 flex items-center gap-3 text-xs text-muted-foreground">
+                <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
                   {result.viewCount !== null && (
                     <span className="flex items-center gap-1">
                       <Eye className="size-3" />
                       {formatCompactNumber(result.viewCount)}
+                    </span>
+                  )}
+                  {result.likeCount !== null && (
+                    <span className="flex items-center gap-1">
+                      <ThumbsUp className="size-3" />
+                      {formatCompactNumber(result.likeCount)}
+                    </span>
+                  )}
+                  {result.commentCount !== null && (
+                    <span className="flex items-center gap-1">
+                      <MessageCircle className="size-3" />
+                      {formatCompactNumber(result.commentCount)}
                     </span>
                   )}
                   <span>{formatRelativeDate(result.publishedAt)}</span>

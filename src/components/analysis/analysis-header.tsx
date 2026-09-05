@@ -5,6 +5,7 @@ import { Logo } from "@/components/brand/logo";
 import { formatDuration } from "@/lib/utils";
 import { SaveButton } from "./save-button";
 import { ExportMenu } from "./export-menu";
+import { VideoStats } from "./video-stats";
 import type { AnalysisRow } from "@/lib/db/types";
 
 export function AnalysisHeader({
@@ -54,6 +55,8 @@ export function AnalysisHeader({
             </h1>
             <p className="mt-1.5 text-sm text-muted-foreground">{analysis.channel}</p>
           </div>
+
+          <VideoStats analysis={analysis} />
 
           <div className="flex flex-wrap items-center gap-2">
             <Button variant="outline" asChild>
